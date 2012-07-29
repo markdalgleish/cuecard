@@ -1,0 +1,35 @@
+{
+  "name": "cuecard",
+  "description": "iPad-powered presentation framework",
+  "version": "0.0.1",
+  "homepage": "https://github.com/markdalgleish/cuecard",
+  "author": {
+    "name": "Mark Dalgleish",
+    "url": "http://markdalgleish.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/markdalgleish/cuecard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/markdalgleish/cuecard/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://markdalgleish.mit-license.org"
+    }
+  ],
+  "main": "lib/cuecard",
+  "engines": {
+    "node": "~0.8.2"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.3.9"
+  },
+  "keywords": []
+}
