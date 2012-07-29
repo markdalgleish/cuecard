@@ -4,7 +4,7 @@ Remote-driven presentation tool
 
 ## Getting Started
 
-Install the module with: `npm install cuecard`
+Install the module with: `npm install https://github.com/markdalgleish/cuecard/tarball/master`
 
 ```javascript
 var cuecard = require('cuecard');
