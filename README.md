@@ -1,6 +1,6 @@
 # cuecard [![Build Status](https://secure.travis-ci.org/markdalgleish/cuecard.png)](http://travis-ci.org/markdalgleish/cuecard)
 
-Remote-driven presentation tool
+iPad-powered presentation tool for Node.js
 
 ## Getting Started
 
