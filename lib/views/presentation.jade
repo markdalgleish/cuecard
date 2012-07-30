@@ -1,0 +1,15 @@
+!!!
+html(lang="en")
+	head
+		title= title
+		if css
+			style(type='text/css')!= css
+	body
+		if html
+			#presentation!= html
+	
+	script(src='/socket.io/socket.io.js')
+	script(src='/js/jquery.js')
+	script(src='/js/fathom.js')
+	script(src='/js/prettify.js')
+	script(src='/js/script.js')
