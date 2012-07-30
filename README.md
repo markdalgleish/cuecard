@@ -8,7 +8,8 @@ Install the module with: `npm install https://github.com/markdalgleish/cuecard/t
 
 ```javascript
 var cuecard = require('cuecard');
-cuecard.awesome(); // "awesome"
+
+cuecard.server.listen(3000);
 ```
 
 ## Contributing
