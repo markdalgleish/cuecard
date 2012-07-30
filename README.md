@@ -18,6 +18,8 @@ cuecard.create({
 });
 ```
 
+In this example you can now visit `http://localhost:3000` to view the presentation, and `http://localhost:3000/remote` to view and control it remotely.
+
 ## Slideshow Content and Pre-Processors
 
 Native HTML and CSS are supported:
