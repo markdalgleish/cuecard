@@ -1,0 +1,421 @@
+<!doctype html>
+<html>
+<head>
+	<title>Getting Closure</title>
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,400italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+	<div id="presentation">
+		<div class="slide title">
+		  <div class="content">
+  			<h1>Getting Closure.</h1>
+  			<h2>Mark Dalgleish<br />Web Directions Code '12<br /><a href="http://bit.ly/gettingclosure">bit.ly/gettingclosure</a></h2>
+			</div>
+		</div>
+		
+		<div class="slide title">
+		  <div class="content">
+  			<h1>A little about me.</h1>
+  			<div class="profile">
+  				<p class="twitter"><a href="http://twitter.com/markdalgleish">@markdalgleish</a></p>
+  				<p>UI Engineer, Aconex</p>
+  				<p>Slides built with <a href="http://markdalgleish.com/projects/fathom">Fathom.js</a></p>
+  			</div>
+			</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>Immediately Invoked Function Expressions</h1>
+				<p>aka IIFE (pronounced "iffy")<br />Coined by Ben Alman, @cowboy</p>
+  <pre>(function(){
+    
+  // Code goes here...
+  
+})();</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>"Immediately Invoked"?</h1>
+				<p>The function expression is called once as soon as it is evaluated and never run again.</p>
+<pre>(function(){
+    
+  // Any code in this function
+  // is run immediately
+  
+})(); //&lt;-- Brackets invoke the function</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>"Function Expression"?</h1>
+        <p>There are two ways of defining functions:</p>
+<pre>
+// Function declaration:
+function foo() {  }
+
+// Function expression:
+var foo = function() {  };
+</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>Why is the difference so important?</h1>
+        <p>You can only immediately invoke function expressions, not function declarations.</p>
+<pre>
+// This is NOT valid syntax:
+function() { /* ... */ }();
+
+// The parentheses around the function
+// turn it into a function expression
+(function() { /* ... */ })();
+</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>Do we always need the parentheses?</h1>
+<pre>
+// Function expressions don't need them...
+var foo = function() { /* ... */ }();
+</pre>
+        <p>However, this is the preferred syntax:</p>
+<pre>
+var foo = (function() { /* ... */ })();
+</pre>
+        <p>The parentheses help indicate that it's an IIFE.</p>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>Turning declarations into expressions</h1>
+        <p>Although parentheses are the preferred method, any of the following will also work.</p>
+<pre>
+!function() { /* ... */ }();
++function() { /* ... */ }();
+-function() { /* ... */ }();
+~function() { /* ... */ }();
+new function() { /* ... */ };
+new function(arg) { /* ... */ }(arg);
+</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>IIFEs in the wild: jQuery</h1>
+				<p>First and last lines of the jQuery source:</p>
+  <pre>(function( window, undefined ) {
+    
+  // Snip...
+  
+})( window );</pre>
+        <p>Notice var called 'undefined', which is undefined.</p>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>IIFEs in the wild: jQuery Plugins</h1>
+        <p>Seal your code in a new scope, alias the global <em>jQuery</em> function as <em>$</em>:</p>
+  <pre>(function( $ ) {
+    
+  // Snip...
+  
+})( jQuery );</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>IIFEs in the wild: Backbone.js</h1>
+				<p>First and last lines of the Backbone.js source:</p>
+  <pre>(function(){
+    
+  // Snip...
+  
+}).call(this);</pre>
+        <p>Notice Backbone.js uses the 'call' syntax variation.</p>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>IIFEs in the wild: CoffeeScript</h1>
+				<p>First and last lines of any script compiled from CoffeeScript using default settings:</p>
+  <pre>(function() {
+    
+  // Snip...
+  
+}).call(this);</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>IIFEs in the wild: requestAnimationFrame</h1>
+				<p>Animation loop which runs immediately and calls itself again once completed.</p>
+  <pre>(function animloop(){
+  window.requestAnimationFrame(animloop);
+  render();
+})();</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>Protect against unwanted globals</h1>
+<pre>
+/* lib.js */
+(function() {
+  window.public = 'foo';
+  var private = 'bar';
+})();
+
+/* script.js */
+public; // 'foo'
+private; // undefined</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>Compute &amp; return a value in one statement</h1>
+  			<p>Returning from an IIFE evaluates to a single value:</p>
+<pre>
+var browser = {
+  vendorPrefix: (function(){
+    var prefix;
+    // Detect vendor prefix...
+    return prefix;
+  })()
+};
+</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>Create a "class" in one statement</h1>
+<pre>
+var MyClass = (function(){
+  function MyClass(foo) {
+    this.foo = foo;
+  }
+  MyClass.prototype = {
+    bar: 'baz'
+  };
+  return MyClass;
+})();
+</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>CoffeeScript classes use IIFEs:</h1>
+<pre>
+class Foo //Compiles to:
+</pre>
+<pre>
+var Foo;
+Foo = (function() {
+  Foo.name = 'Foo';
+  function Foo() {}
+  return Foo;
+})();
+</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>Emulate block scope</h1>
+<pre>
+for (var i = 1; i <= 3; i++) {
+  (function(i){
+    // All variables (including i)
+    // are now scoped to this block
+    
+    // On click, alerts '1', '2' and '3'
+    $elem.click(function() { alert(i); });
+  })(i);
+}
+</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>Why pass 'i' to the for-loop IIFE?</h1>
+        <p>Javascript has lexical (function) scope, so <em>i</em> is shared by all functions created in this loop.</p>
+        <p>The IIFE locks in <em>i</em>'s value, otherwise we get this:</p>
+<pre>
+for (var i = 1; i <= 3; i++) {  
+  // On click, alerts '4', '4' and '4' :(
+  $elem.click(function() { alert(i); });
+}
+</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>CoffeeScript's "do" === instant IIFE</h1>
+<pre>
+do (i) ->
+  console.log i
+</pre>
+<p>Compiles to:</p>
+<pre>
+(function(i) {
+  return console.log(i);
+})(i);
+</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>Create private variables</h1>
+        <p>The revealing module pattern (<em>'num'</em> is private):</p>
+<pre>
+var number = (function(){
+  var num = 0,
+      add = function(n) { num = num + n; },
+      get = function() { return num; };
+  
+  return { add: add, get: get };
+})();
+</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>Create private functions</h1>
+<pre>
+var foo = (function(){
+  var priv = function() { alert('Hi!'); },
+      publ = function() { priv(); };
+  
+  return publ;
+})();
+</pre>
+        <p><em>'foo'</em> is now a function that calls the private <em>'priv'</em> function (available via a closure).</p>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>IIFE !== Closure.... so what is a closure?</h1>
+        <p>A closure is created when a function is returned from another function, retaining its original scope.</p>
+<pre>
+var foo = (function() {
+  var bar = 'baz';
+  return function() { return bar; };
+})();
+foo(); // Returns the value of 'bar'
+bar; // Undefined, out of scope
+</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>Using closures to fix lack of block scope:</h1>
+<pre>
+function makeAlert(i) {
+  return function() {
+    alert(i)
+  }
+}
+for (var i = 1; i <= 3; i++) {  
+  // On click, alerts '1', '2' and '3' :D
+  $elem.click(makeAlert(i));
+}
+</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>IIFE !== Self-Executing Anonymous Function</h1>
+        <p>What IIFEs used to be called (mistakenly).</p>
+        <p>Why is this term incorrect?</p>
+        <ul>
+          <li>IIFEs don't execute themselves, they are invoked like any other function.</li>
+          <li>They don't have to be anonymous, it's only important that they're function expressions.</li>
+        </ul>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>A Real Self-Executing Anonymous Function</h1>
+        <p>This anonymous function literally executes itself:</p>
+<pre>
+var foo = function() {
+  if (arguments.callee.caller ===
+      arguments.callee) {
+    return; // ...if foo called foo
+  }
+  arguments.callee(); // &lt;- Self-execute
+};
+</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>ES5 Strict and Named Function Expressions</h1>
+        <p>In ECMAScript 5, <em>'arguments.callee'</em> is deprecated in favour of using named function expressions:</p>
+<pre>
+var foo = function bar() {
+  if (bar.caller === bar) {
+    return;
+  }
+  bar();
+};
+</pre>
+  		</div>
+		</div>
+		
+		<div class="slide">
+		  <div class="content">
+  			<h1>Wrapping up: Why are IIFEs useful?</h1>
+				<ul>
+          <li>Used to seal code inside a new scope and prevent unwanted global variables.</li>
+          <li>Allow you to compute and return a value (e.g. "classes") where only one statement is allowed.</li>
+          <li>Required to emulate block scope (pre ES6's 'let').</li>
+          <li>Useful in creating private functions and variables using closures.</li>
+				</ul>
+  		</div>
+		</div>
+		
+		<div class="slide title">
+		  <div class="content">
+  			<h1>Thanks for watching.</h1>
+  			<div class="profile">
+  				<p>Slides: <a href="http://bit.ly/gettingclosure">bit.ly/gettingclosure</a></p>
+  			</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/fathom.js"></script>
+	<script src="js/prettify.js"></script>
+	<script src="js/script.js"></script>
+</body>
+</html>
