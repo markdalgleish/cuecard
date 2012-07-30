@@ -20,7 +20,9 @@ cuecard.create({
 });
 ```
 
-In this example you can now visit `http://localhost:3000` to view the presentation, and `http://localhost:3000/remote` to view and control it remotely.
+In this example you can now visit `http://localhost:3000` to view the presentation (visit this URL on the projector).
+
+Visit `http://localhost:3000/remote` to view and control it remotely (visit this URL on your iPad).
 
 ## Slideshow Content and Pre-Processors
 
