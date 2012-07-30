@@ -13,3 +13,8 @@ html(lang="en")
 	script(src='/js/fathom.js')
 	script(src='/js/prettify.js')
 	script(src='/js/script.js')
+	
+	if isRemote
+		script(src='/js/remote.js')
+	else
+		script(src='/js/client.js')
