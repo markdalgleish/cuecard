@@ -9,6 +9,12 @@ Install the module with: `npm install https://github.com/markdalgleish/cuecard/t
 ```javascript
 var cuecard = require('cuecard');
 
+cuecard.configure({
+	title: 'My Cuecard Presentation',
+	html: __dirname + '/slides.html',
+	css: __dirname + '/slides.css'
+})
+
 cuecard.server.listen(3000);
 ```
 
