@@ -2,11 +2,11 @@
 html(lang="en")
 	head
 		title= title
-		if css
-			style(type='text/css')!= css
+		if styles
+			style(type='text/css')!= styles
 	body
-		if html
-			#presentation!= html
+		if slides
+			#presentation!= slides
 	
 	script(src='/socket.io/socket.io.js')
 	script(src='/js/jquery.js')
