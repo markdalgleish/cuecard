@@ -54,25 +54,3 @@
     color: white;
 	
 }
-
-#cuecard-toolbar .buttons {
-	float: right;
-	margin: 13px 13px 0 0;
-}
-
-#cuecard-toolbar button {
-	cursor: pointer;
-    line-height: 26px;
-    color: white;
-    background: #1E83E0;
-    padding: 10px 24px;
-    font-size: 26px;
-    margin-left: 13px;
-    border-radius: 10px;
-    border: 2px solid white;
-}
-
-#cuecard-toolbar button:active {
-	background: white;
-	color: #1E83E0;
-}
