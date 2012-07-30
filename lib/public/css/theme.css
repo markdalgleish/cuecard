@@ -60,20 +60,7 @@ body {
 	white-space: nowrap;
 }
 
-div.slide {
-  -webkit-perspective: 3000;
-  -moz-perspective: 3000;
-  -ms-perspective: 3000;
-  -o-perspective: 3000;
-  perspective: 3000;
-}
-
 div.slide .content {
-  -webkit-transition: all 0.8s ease;
-  -moz-transition: all 0.8s ease;
-  -ms-transition: all 0.8s ease;
-  -o-transition: all 0.8s ease;
-  transition: all 0.8s ease;
   box-shadow: 0 0 100px rgba(0,0,0,0.2);
 	border-radius: 20px 0 20px 0;
 	-moz-background-clip: padding;
@@ -91,11 +78,6 @@ div.slide .content {
   color: #505050;
 }
 	div.inactiveslide .content {
-    -webkit-transform: translateZ(-500px) rotateX(30deg);
-    -moz-transform: translateZ(-500px) rotateX(30deg);
-    -ms-transform: translateZ(-500px) rotateX(30deg);
-    -o-transform: translateZ(-500px) rotateX(30deg);
-    transform: translateZ(-500px) rotateX(30deg);
 		opacity: 0.6;
 	}
 	div.inactiveslide .content:hover {
@@ -103,11 +85,6 @@ div.slide .content {
 	  cursor: pointer;
 	}
 	div.activeslide .content {
-    -webkit-transform: none;
-    -moz-transform: none;
-    -ms-transform: none;
-    -o-transform: none;
-    transform: none;
 		opacity: 1;
 	}
 
