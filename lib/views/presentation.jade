@@ -3,9 +3,27 @@ html(lang="en")
 	head
 		title= title
 		meta(name='viewport', content='width=device-width; initial-scale=1;')
+
+		if isRemote
+			link(rel='stylesheet', type='text/css', href='/css/cuecard.css')
+		
 		if styles
 			style(type='text/css')!= styles
-	body
+	
+	body(class=isRemote?'cuecard-remote':'cuecard-client')
+
+		if isRemote
+			#cuecard-toolbar
+				.logo
+					span.cue
+						em cue
+					span.card
+						strong card
+
+				.buttons
+					button.prev Prev
+					button.next Next
+
 		if slides
 			#presentation!= slides
 	
