@@ -1,6 +1,8 @@
 # cuecard [![Build Status](https://secure.travis-ci.org/markdalgleish/cuecard.png)](http://travis-ci.org/markdalgleish/cuecard)
 
-iPad-powered presentation tool for Node.js
+iPad-controlled presentation framework for Node.js
+
+Any browser can control it, but an iPad or Android device works best.
 
 ## Getting Started
 
