@@ -3,12 +3,17 @@ html(lang="en")
 	head
 		title= title
 		meta(name='viewport', content='width=device-width; initial-scale=1;')
+		meta(name='apple-mobile-web-app-capable',content='yes')
+		meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
+
+		if adapter === 'reveal'
+			link(href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic', rel='stylesheet', type='text/css')
 
 		if isRemote
 			link(rel='stylesheet', type='text/css', href='/css/cuecard.css')
 		
 		each href in files.css
-			link(rel='stylesheet', type='text/css', href=href)
+			link(rel='stylesheet', type='text/css', media=href.indexOf('print')>=0 ? 'print' : 'screen', href=href)
 
 		if styles
 			style(type='text/css')!= styles
