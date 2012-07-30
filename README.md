@@ -50,21 +50,23 @@ cuecard.create({
 
 ## Sample Slide Markup
 
-Your slide markup should look like this:
+If using the default Fathom.js adapter, your slide markup should look like this:
 
 ```html
-<div class="slide">
-	<h1>Slide One</h1>
-	<p>This is a slide</p>
-	<ul>
-		<li>First bullet point</li>
-		<li>Second bullet point</li>
-	</ul>
-</div>
-<div class="slide">
-	<h1>Slide Two</h1>
-	<p>This slide has some code</p>
-	<pre>var cuecard = require('cuecard');<pre>
+<div id="presentation">
+	<div class="slide">
+		<h1>Slide One</h1>
+		<p>This is a slide</p>
+		<ul>
+			<li>First bullet point</li>
+			<li>Second bullet point</li>
+		</ul>
+	</div>
+	<div class="slide">
+		<h1>Slide Two</h1>
+		<p>This slide has some code</p>
+		<pre>var cuecard = require('cuecard');<pre>
+	</div>
 </div>
 ```
 
