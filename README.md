@@ -16,7 +16,8 @@ cuecard.create({
 	remoteUrl: '/remote',
 	title: 'My Cuecard Presentation',
 	slides: __dirname + '/slides.html',
-	styles: __dirname + '/slides.css'
+	styles: __dirname + '/slides.css',
+	static: __dirname + '/public'
 });
 ```
 
