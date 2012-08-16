@@ -17,7 +17,7 @@ cuecard.create({
 	title: 'My Cuecard Presentation',
 	slides: __dirname + '/slides.html',
 	styles: __dirname + '/slides.css',
-	static: __dirname + '/public'
+	static: __dirname + '/static'
 });
 ```
 
@@ -54,20 +54,19 @@ cuecard.create({
 If using the default Fathom.js adapter, your slide markup should look like this:
 
 ```html
-<div id="presentation">
-	<div class="slide">
-		<h1>Slide One</h1>
-		<p>This is a slide</p>
-		<ul>
-			<li>First bullet point</li>
-			<li>Second bullet point</li>
-		</ul>
-	</div>
-	<div class="slide">
-		<h1>Slide Two</h1>
-		<p>This slide has some code</p>
-		<pre>var cuecard = require('cuecard');<pre>
-	</div>
+<div class="slide">
+	<h1>Slide One</h1>
+	<p>This is a slide</p>
+	<ul>
+		<li>First bullet point</li>
+		<li>Second bullet point</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h1>Slide Two</h1>
+	<p>This slide has some code</p>
+	<pre>var cuecard = require('cuecard');<pre>
 </div>
 ```
 
